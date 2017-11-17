@@ -84,7 +84,7 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
     boolean mMoveMapByAPI = true;
 
     LocationRequest locationRequest = new LocationRequest()
-            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+            .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
             .setInterval(UPDATE_INTERVAL_MS)
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
     @Override
@@ -147,6 +147,8 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
                 .latlng(location.latitude, location.longitude)//현재 위치
                 .radius(500) //500 미터 내에서 검색
                 .type(PlaceType.RESTAURANT) //음식점
+                .language("ko", "KR")
+
                 .build()
                 .execute();
     }
