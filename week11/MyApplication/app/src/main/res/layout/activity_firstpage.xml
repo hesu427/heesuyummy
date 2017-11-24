@@ -32,7 +32,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="29dp"
         android:text="예약"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:id="@+id/reservationbtn"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -42,4 +43,14 @@
         android:text="share"
         android:textSize="20dp"
         android:id="@+id/sharebtn"/>
+
+    <Button
+        android:id="@+id/calbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sharebtn"
+        android:layout_below="@+id/mapbtn"
+        android:layout_marginTop="40dp"
+        android:text="naver"
+        android:textSize="20dp" />
 </RelativeLayout>

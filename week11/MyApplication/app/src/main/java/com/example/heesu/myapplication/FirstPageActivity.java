@@ -25,6 +25,26 @@ public class FirstPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_firstpage);
 
         Button mapbtn = (Button) findViewById(R.id.mapbtn);
+        Button reservationbtn=(Button)findViewById(R.id.reservationbtn);
+        Button calbtn = (Button)findViewById(R.id.calbtn);
+        calbtn.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        Intent intent = new Intent(FirstPageActivity.this,APIExamCalendar.class);
+                        //액티비티 시작!
+                        startActivity(intent);
+                    }
+                }
+        );
+        reservationbtn.setOnClickListener(
+                new Button.OnClickListener(){
+                    public void onClick(View v){
+                        Intent intent = new Intent(FirstPageActivity.this,ReservationActivity.class);
+                        //액티비티 시작!
+                        startActivity(intent);
+                    }
+                }
+        );
         mapbtn.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
