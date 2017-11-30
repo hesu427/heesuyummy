@@ -2,8 +2,6 @@ package com.example.heesu.myapplication;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,15 +11,15 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
@@ -53,17 +51,12 @@ import noman.googleplaces.PlaceType;
 import noman.googleplaces.PlacesException;
 import noman.googleplaces.PlacesListener;
 
-/**
- * Created by heesu on 2017-11-16.
- */
 
-public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyCallback,
+public class GooglleMapActivity extends AppCompatActivity
+        implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,PlacesListener {
-
-    LatLng currentPosition;
-    List<Marker> previous_marker = null;
 
 
     private GoogleApiClient mGoogleApiClient = null;
@@ -82,11 +75,13 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
     Location mCurrentLocatiion;
     boolean mMoveMapByUser = true;
     boolean mMoveMapByAPI = true;
+    LatLng currentPosition;
 
     LocationRequest locationRequest = new LocationRequest()
-            .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
+            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
             .setInterval(UPDATE_INTERVAL_MS)
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
+
     @Override
     public void onPlacesFailure(PlacesException e) {
 
@@ -108,10 +103,12 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
                             = new LatLng(place.getLatitude()
                             , place.getLongitude());
 
+                    String markerSnippet = getCurrentAddress(latLng);
+
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title(place.getName());
-                    markerOptions.snippet(place.getVicinity());
+                    markerOptions.snippet(markerSnippet);
                     Marker item = mGoogleMap.addMarker(markerOptions);
                     previous_marker.add(item);
 
@@ -132,7 +129,7 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
     public void onPlacesFinished() {
 
     }
-
+    List<Marker> previous_marker = null;
 
     public void showPlaceInformation(LatLng location)
     {
@@ -143,29 +140,28 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
 
         new NRPlaces.Builder()
                 .listener(GooglleMapActivity.this)
-                .key("AIzaSyBlOPj8YyPI5xOV0yc_B139nb6SzA_W5bA")
+                .key("AIzaSyBvIQsZsnc7JYjXL9NOMKNwFMOkbzUc08E")
                 .latlng(location.latitude, location.longitude)//현재 위치
                 .radius(500) //500 미터 내에서 검색
                 .type(PlaceType.RESTAURANT) //음식점
-                .language("ko", "KR")
-
                 .build()
                 .execute();
     }
 
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         setContentView(R.layout.activity_googlemap);
+
         previous_marker = new ArrayList<Marker>();
 
-        Button search = (Button)findViewById(R.id.search);
-        search.setOnClickListener(new View.OnClickListener() {
+        Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPlaceInformation(currentPosition);
@@ -175,16 +171,22 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
         Log.d(TAG, "onCreate");
         mActivity = this;
 
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        MapFragment mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.map);
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
+
+
+
     @Override
     public void onResume() {
 
@@ -207,6 +209,7 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
             }
         }
     }
+
 
     private void startLocationUpdates() {
 
@@ -234,12 +237,15 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
 
     }
 
+
+
     private void stopLocationUpdates() {
 
         Log.d(TAG,"stopLocationUpdates : LocationServices.FusedLocationApi.removeLocationUpdates");
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         mRequestingLocationUpdates = false;
     }
+
 
 
     @Override
@@ -306,12 +312,14 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
 
     @Override
     public void onLocationChanged(Location location) {
+
         currentPosition
                 = new LatLng( location.getLatitude(), location.getLongitude());
 
+
         Log.d(TAG, "onLocationChanged : ");
 
-        String markerTitle = getCurrentAddress(location);
+        String markerTitle = getCurrentAddress(currentPosition);
         String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
                 + " 경도:" + String.valueOf(location.getLongitude());
 
@@ -409,7 +417,7 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
     }
 
 
-    public String getCurrentAddress(Location location) {
+    public String getCurrentAddress(LatLng latlng) {
 
         //지오코더... GPS를 주소로 변환
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -419,8 +427,8 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
         try {
 
             addresses = geocoder.getFromLocation(
-                    location.getLatitude(),
-                    location.getLongitude(),
+                    latlng.latitude,
+                    latlng.longitude,
                     1);
         } catch (IOException ioException) {
             //네트워크 문제
@@ -463,15 +471,16 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
 
         LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
 
-        //구글맵의 디폴트 현재 위치는 파란색 동그라미로 표시
-        //마커를 원하는 이미지로 변경하여 현재 위치 표시하도록 수정해야함.
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(currentLatLng);
         markerOptions.title(markerTitle);
         markerOptions.snippet(markerSnippet);
         markerOptions.draggable(true);
-        markerOptions.icon(BitmapDescriptorFactory
-                .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+
+        //구글맵의 디폴트 현재 위치는 파란색 동그라미로 표시
+        //마커를 원하는 이미지로 변경하여 현재 위치 표시하도록 수정 fix - 2017. 11.27
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+
         currentMarker = mGoogleMap.addMarker(markerOptions);
 
 
@@ -678,4 +687,3 @@ public class GooglleMapActivity extends AppCompatActivity implements OnMapReadyC
 
 
 }
-

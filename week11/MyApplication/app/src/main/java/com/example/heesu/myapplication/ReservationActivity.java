@@ -3,6 +3,7 @@ package com.example.heesu.myapplication;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -31,6 +32,8 @@ public class ReservationActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_reservation);
         setTitle("시간 예약");
+
+
 
 
         chrono = (Chronometer)findViewById(R.id.chronometer1);

@@ -5,52 +5,104 @@
     android:id="@+id/activity_firstpage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFAFA"
     tools:context="com.example.heesu.myapplication.FirstPageActivity">
+
+
+    <Button
+        android:id="@+id/mapbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/action_search"
+        android:layout_centerHorizontal="true"
+        android:background="	#FFE4E1"
+        android:text="map"
+        android:textColor="#FFA07A"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/reservationbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/action_search"
+        android:layout_marginStart="23dp"
+        android:background="	#FFE4E1"
+        android:text="reservation"
+        android:textColor="#FFA07A"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/sharebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/action_search"
+        android:background="	#FFE4E1"
+        android:textColor="#FFA07A"
+        android:layout_marginEnd="24dp"
+        android:text="share"
+        android:textSize="20dp" />
+
+    <SearchView
+        android:id="@+id/action_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/mapbtn"
+        android:layout_below="@+id/mapbtn"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="250dp"
+        android:background="@drawable/spaghetti"
+        android:id="@+id/imageView" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="야미야미"
-        android:textSize="30dp"
+        android:layout_alignStart="@+id/mapbtn"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginTop="13dp"
+        android:text="한성스파게티"
+        android:textSize="20dp"
+        android:textColor="#000000"
         android:id="@+id/textView" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="153dp"
-        android:text="지도"
-        android:textSize="30dp"
-        android:id="@+id/mapbtn" />
+        android:layout_marginTop="15dp"
+        android:text="서울시 성북구 ....."
+        android:textColor="#000000"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="19dp"
+        android:text="02-123-456"
+        android:textColor="#000000"
+        android:id="@+id/textView3" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/mapbtn"
-        android:layout_alignBottom="@+id/mapbtn"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="29dp"
-        android:text="예약"
-        android:textSize="30dp"
-        android:id="@+id/reservationbtn"/>
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/textView3"
+        android:background="#FFFFF0"
+        android:text="review=>"
+        android:textColor="#FFA07A"
+        android:textSize="15dp"
+        android:id="@+id/reviewbtn"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignTop="@+id/mapbtn"
-        android:text="share"
-        android:textSize="20dp"
-        android:id="@+id/sharebtn"/>
 
-    <Button
-        android:id="@+id/calbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/sharebtn"
-        android:layout_below="@+id/mapbtn"
-        android:layout_marginTop="40dp"
-        android:text="naver"
-        android:textSize="20dp" />
 </RelativeLayout>
