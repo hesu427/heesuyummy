@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="capture"
-        android:background="#000000"
+        android:background="#FFFAFA"
         android:textColor="#FFA07A"/>
 
 </FrameLayout>

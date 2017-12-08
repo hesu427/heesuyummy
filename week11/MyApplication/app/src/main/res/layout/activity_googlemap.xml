@@ -14,10 +14,12 @@
         android:layout_weight="0.8"
         class="com.google.android.gms.maps.MapFragment" />
     <Button
-        android:text="장소검색"
+        android:text="SEARCH"
+        android:textColor="#CD5C5C"
+        android:background="#FAFAD2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.1"
         android:id="@+id/button"/>
 
 </LinearLayout>

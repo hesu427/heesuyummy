@@ -13,9 +13,8 @@
         android:id="@+id/mapbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/action_search"
         android:layout_centerHorizontal="true"
-        android:background="	#FFE4E1"
+        android:background="	#FFFAFA"
         android:text="map"
         android:textColor="#FFA07A"
         android:textSize="20dp" />
@@ -25,9 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/action_search"
         android:layout_marginStart="23dp"
-        android:background="	#FFE4E1"
+        android:background="	#FFFAFA"
         android:text="reservation"
         android:textColor="#FFA07A"
         android:textSize="14dp" />
@@ -37,19 +35,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/action_search"
-        android:background="	#FFE4E1"
+        android:background="	#FFFAFA"
         android:textColor="#FFA07A"
         android:layout_marginEnd="24dp"
         android:text="share"
         android:textSize="20dp" />
-
-    <SearchView
-        android:id="@+id/action_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -98,11 +88,33 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/textView3"
-        android:background="#FFFFF0"
+        android:background="#FFE4E1"
         android:text="review=>"
         android:textColor="#FFA07A"
         android:textSize="15dp"
         android:id="@+id/reviewbtn"/>
+
+    <Button
+        android:id="@+id/regbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/reservationbtn"
+        android:layout_below="@+id/reviewbtn"
+        android:layout_marginTop="57dp"
+        android:background="#FFFAFA"
+        android:text="REGISTRATION"
+        android:textColor="#FFA07A" />
+
+    <Button
+        android:id="@+id/getget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/regbtn"
+        android:layout_alignBottom="@+id/regbtn"
+        android:layout_alignStart="@+id/textView3"
+        android:background="#FFFAFA"
+        android:text="Get"
+        android:textColor="#FFA07A" />
 
 
 </RelativeLayout>

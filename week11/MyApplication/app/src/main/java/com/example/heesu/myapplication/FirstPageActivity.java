@@ -36,10 +36,21 @@ public class FirstPageActivity extends AppCompatActivity {
         Button mapbtn = (Button) findViewById(R.id.mapbtn);
         Button reservationbtn = (Button) findViewById(R.id.reservationbtn);
         Button reviewbtn = (Button) findViewById(R.id.reviewbtn);
+        Button regbtn = (Button)findViewById(R.id.regbtn);
+        Button getget = (Button)findViewById(R.id.getget);
+              regbtn.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent intent = new Intent(FirstPageActivity.this, DBActivity.class);
+                        //액티비티 시작!
+                        startActivity(intent);
+                    }
+                }
+        );
         reviewbtn.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(FirstPageActivity.this, ReviewActivity.class);
+                        Intent intent = new Intent(FirstPageActivity.this, TotalReviewActivity.class);
                         //액티비티 시작!
                         startActivity(intent);
                     }
@@ -106,6 +117,7 @@ public class FirstPageActivity extends AppCompatActivity {
             }
 
         });
+
         return true;
     }
 }

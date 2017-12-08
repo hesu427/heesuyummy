@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_totalreview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFAFA">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout2">
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:hint="제목을 입력해주세요."
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textSize="15sp"
+            android:textColor="#FFA07A"/>
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/editText1"
+            android:layout_below="@+id/editText1"
+            android:layout_marginTop="15dp"
+            android:numStars="5"
+            android:rating="2.0"
+            android:stepSize="1.0"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="369dp" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_alignStart="@+id/textView9"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="내용을 입력해주세요."
+        android:inputType="none"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:singleLine="false"
+        android:textSize="15sp"
+        android:textColor="#FFA07A"/>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/relativeLayout2"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="19dp"
+        android:text="사진을 올려주세요=>"
+        android:textColor="#BC8F8F"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/textView9"
+        android:background="#FFFAFA"
+        android:text="CLICK"
+        android:textColor="#FFA07A" />
+
+    <Button
+        android:id="@+id/gobtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="#FFFAFA"
+        android:text="완료"
+        android:textColor="#CD5C5C"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

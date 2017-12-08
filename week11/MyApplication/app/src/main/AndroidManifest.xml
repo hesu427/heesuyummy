@@ -42,6 +42,10 @@
         <activity android:name=".ShareActivity"></activity>
         <activity android:name=".ReservationActivity"></activity>
         <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".DBActivity"></activity>
+        <activity android:name=".TotalReviewActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+
 
         <!-- 네이버 아이디로 로그인에서 사용하는 액티비티를 등록 -->
         <activity android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity"

@@ -36,8 +36,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="Next"
-        android:background="	#FFE4E1"
-        android:textColor="#FFA07A"
+        android:background="#FFFAFA"
+        android:textColor="#CD5C5C"
         android:textSize="30dp"
 
         android:id="@+id/btnNext"/>
